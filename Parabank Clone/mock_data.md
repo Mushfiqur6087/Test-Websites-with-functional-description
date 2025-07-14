@@ -1,7 +1,11 @@
-## login
-  email: "admin@parabank.com"
-  username: "admin"
-  password: "Admin123!@#"
+# Mock Data
 
+## Login Credentials
+
+**Email:** admin@parabank.com  
+**Username:** admin  
+**Password:** Admin123!@#
+
+### Login Screenshot
 ![Login Screenshot](SS/login.png)
 
