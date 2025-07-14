@@ -81,6 +81,7 @@ export default function Register() {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
+    setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
@@ -88,6 +89,11 @@ export default function Register() {
     e.preventDefault();
     
     if (!validateForm()) {
+      toast({
+        title: "Validation Error",
+        description: "Please fix the errors below and try again.",
+        variant: "destructive",
+      });
       return;
     }
 
@@ -96,8 +102,8 @@ export default function Register() {
     // Simulate registration
     setTimeout(() => {
       toast({
-        title: "Account created successfully",
-        description: "Please sign in with your new credentials",
+        title: "Congratulations! You are registered!",
+        description: "Account created successfully. Please sign in with your new credentials.",
       });
       navigate("/login");
       setIsLoading(false);
@@ -238,7 +244,7 @@ export default function Register() {
 
                 <div className="space-y-2">
                   <Label htmlFor="state">State</Label>
-                  <Select onValueChange={handleStateChange}>
+                  <Select onValueChange={handleStateChange} value={formData.state}>
                     <SelectTrigger className={errors.state ? "border-destructive" : ""}>
                       <SelectValue placeholder="Select state" />
                     </SelectTrigger>
