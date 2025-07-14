@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { 
   Home, 
   PlusCircle, 
@@ -18,6 +18,7 @@ import {
   X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 const navigation = [
@@ -41,10 +42,22 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   const handleLogout = () => {
-    // TODO: Implement logout logic
-    console.log("Logout clicked");
+    // Clear any stored session data (if you have any in localStorage/sessionStorage)
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('userSession');
+    
+    // Show logout confirmation
+    toast({
+      title: "Logged out successfully",
+      description: "You have been safely logged out of ParaBank",
+    });
+    
+    // Redirect to login page
+    navigate("/");
   };
 
   return (

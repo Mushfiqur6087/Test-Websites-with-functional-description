@@ -7,11 +7,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
+import { MOCK_ACCOUNTS, MOCK_PAYEES } from "@/lib/mockData";
 
-const mockAccounts = [
-  { id: "123456789", name: "Checking Account (****6789)", balance: 2847.52 },
-  { id: "123456790", name: "Savings Account (****6790)", balance: 15678.90 },
-];
+const paymentAccounts = MOCK_ACCOUNTS.filter(account => 
+  account.type === "Checking" || account.type === "Savings"
+).map(account => ({
+  id: account.id,
+  name: `${account.type} Account (${account.accountNumber})`,
+  balance: account.balance
+}));
 
 const states = [
   "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
@@ -73,7 +77,7 @@ export default function BillPay() {
     }
 
     // Sufficient funds validation
-    const sourceAccount = mockAccounts.find(acc => acc.id === formData.sourceAccount);
+    const sourceAccount = paymentAccounts.find(acc => acc.id === formData.sourceAccount);
     if (sourceAccount && parseFloat(formData.paymentAmount) > sourceAccount.balance) {
       newErrors.paymentAmount = "Insufficient funds in source account";
     }
@@ -180,6 +184,38 @@ export default function BillPay() {
                 {errors.payeeName && (
                   <p className="text-sm text-destructive">{errors.payeeName}</p>
                 )}
+                
+                {/* Quick select from saved payees */}
+                <div className="text-sm">
+                  <Label className="text-xs text-muted-foreground">Quick Select:</Label>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {MOCK_PAYEES.map((payee) => (
+                      <Button
+                        key={payee.id}
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="text-xs h-6"
+                        onClick={() => {
+                          setFormData({
+                            ...formData,
+                            payeeName: payee.name,
+                            streetAddress: payee.streetAddress,
+                            city: payee.city,
+                            state: payee.state,
+                            zipCode: payee.zipCode,
+                            phoneNumber: payee.phoneNumber,
+                            payeeAccount: payee.accountNumber,
+                            payeeAccountConfirm: payee.accountNumber,
+                          });
+                          setErrors({});
+                        }}
+                      >
+                        {payee.name}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -344,7 +380,7 @@ export default function BillPay() {
                       <SelectValue placeholder="Select source account" />
                     </SelectTrigger>
                     <SelectContent>
-                      {mockAccounts.map((account) => (
+                      {paymentAccounts.map((account) => (
                         <SelectItem key={account.id} value={account.id}>
                           <div className="flex justify-between items-center w-full">
                             <span>{account.name}</span>
@@ -401,7 +437,7 @@ export default function BillPay() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">From Account:</span>
-                <span>{mockAccounts.find(acc => acc.id === formData.sourceAccount)?.name}</span>
+                <span>{paymentAccounts.find(acc => acc.id === formData.sourceAccount)?.name}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Processing Time:</span>

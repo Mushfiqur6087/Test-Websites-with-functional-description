@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { authenticateUser, MOCK_CREDENTIALS } from "@/lib/mockData";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,9 +22,9 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate authentication
+    // Simulate authentication delay
     setTimeout(() => {
-      if (formData.username && formData.password) {
+      if (authenticateUser(formData.username, formData.password)) {
         toast({
           title: "Signed in successfully",
           description: "Welcome back to ParaBank",
@@ -141,10 +142,21 @@ export default function Login() {
         </Card>
 
         {/* Demo credentials */}
-        <div className="mt-6 p-4 bg-muted/50 rounded-lg border">
-          <p className="text-sm text-center text-muted-foreground mb-2">Demo Credentials:</p>
-          <p className="text-xs text-center text-muted-foreground">
-            Username: demo@parabank.com | Password: demo123
+        <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+          <p className="text-sm text-center font-semibold text-primary mb-2">Demo Credentials</p>
+          <div className="text-center space-y-1">
+            <p className="text-sm font-mono bg-background/80 px-3 py-1 rounded">
+              <span className="text-muted-foreground">Email:</span> <span className="font-semibold">{MOCK_CREDENTIALS.email}</span>
+            </p>
+            <p className="text-sm font-mono bg-background/80 px-3 py-1 rounded">
+              <span className="text-muted-foreground">Username:</span> <span className="font-semibold">{MOCK_CREDENTIALS.username}</span>
+            </p>
+            <p className="text-sm font-mono bg-background/80 px-3 py-1 rounded">
+              <span className="text-muted-foreground">Password:</span> <span className="font-semibold">{MOCK_CREDENTIALS.password}</span>
+            </p>
+          </div>
+          <p className="text-xs text-center text-muted-foreground mt-2">
+            You can login using either email or username with the password above
           </p>
         </div>
       </div>

@@ -1,10 +1,10 @@
-# website_navigation
+# Website description
 Parabank is a sample banking application. When visitors arrive, they see the sign-in page, which offers an Email / Username and Password form, a Register link for new customers, and a Forgot Password? link for credential recovery. After a successful log-in, users reach their account dashboard displaying every account and balance. The left-hand navigation menu now contains the following options: ① Accounts Overview (default dashboard view), ② Open New Account, ③ Transfer Funds, ④ Bill Pay, ⑤ Request Loan, ⑥ Update Contact Info, ⑦ Manage Cards, ⑧ Investments, ⑨ Account Statements, ⑩ Security Settings, ⑪ Support Center, and ⑫ Log Out.
 
-# functional_specification
+# Functional specification
 
 ## login
-The login page contains a login form with two required input fields—Email/Username and Password—along with a "Sign In" button and a "Forgot Password?" link. When the user submits the form, the system securely validates the provided credentials against the registered-user database. If authentication succeeds, the system flashes “Signed in successfully.” and redirects the user to the Accounts Overview page; if it fails, it shows “Incorrect email or password. Please try again,” clears the password field, and allows another attempt.
+The login page contains a login form with two required input fields—Email/Username and Password—along with a "Sign In" button and a "Forgot Password?" link. Email must be a valid email format and password must be at least 8 characters with uppercase, lowercase, number, and special character. When the user submits the form, the system securely validates the provided credentials against the registered-user database. If authentication succeeds, the system flashes "Signed in successfully." and redirects the user to the Accounts Overview page; if it fails, it shows "Incorrect email or password. Please try again," clears the password field, and allows another attempt.
 
 ## register
 The registration page presents a sign-up form with required inputs for First Name, Last Name, Street Address, City, State, ZIP Code, Phone Number, Social Security Number, Username, Password, and Confirm Password, plus a “Register” button. On submission, the system validates field completeness, pattern conformance, username uniqueness, and password match. Success produces “Account created successfully — please sign in,” then redirects to the login page; otherwise specific field-level errors are displayed for correction.

@@ -4,73 +4,23 @@ import { Eye, EyeOff, PlusCircle, ArrowLeftRight, CreditCard, TrendingUp, Trendi
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-// Mock account data
-const mockAccounts = [
-  {
-    id: "123456789",
-    type: "Checking",
-    balance: 2847.52,
-    accountNumber: "****6789",
-  },
-  {
-    id: "123456790",
-    type: "Savings",
-    balance: 15678.90,
-    accountNumber: "****6790",
-  },
-  {
-    id: "123456791",
-    type: "Credit Card",
-    balance: -1234.56,
-    accountNumber: "****6791",
-  },
-];
-
-// Mock recent transactions
-const mockTransactions = [
-  {
-    id: "1",
-    description: "Direct Deposit - Salary",
-    amount: 3500.00,
-    date: "2024-01-15",
-    type: "credit",
-  },
-  {
-    id: "2",
-    description: "Online Purchase - Amazon",
-    amount: -87.45,
-    date: "2024-01-14",
-    type: "debit",
-  },
-  {
-    id: "3",
-    description: "Transfer to Savings",
-    amount: -500.00,
-    date: "2024-01-13",
-    type: "transfer",
-  },
-  {
-    id: "4",
-    description: "ATM Withdrawal",
-    amount: -60.00,
-    date: "2024-01-12",
-    type: "debit",
-  },
-];
+import { MOCK_ACCOUNTS, getRecentTransactions, getTotalBalance, getTotalAssets, getTotalLiabilities } from "@/lib/mockData";
 
 export default function Dashboard() {
   const [showBalance, setShowBalance] = useState(true);
 
-  const totalBalance = mockAccounts
-    .filter(account => account.type !== "Credit Card")
-    .reduce((sum, account) => sum + account.balance, 0);
+  // Use mock data
+  const mockAccounts = MOCK_ACCOUNTS;
+  const mockTransactions = getRecentTransactions(4);
+  const totalBalance = getTotalBalance();
+  const totalAssets = getTotalAssets();
+  const totalLiabilities = getTotalLiabilities();
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-    }).format(Math.abs(amount));
+    }).format(amount);
   };
 
   const formatDate = (dateString: string) => {
@@ -196,14 +146,14 @@ export default function Dashboard() {
                           : "text-foreground"
                       }>
                         {showBalance 
-                          ? (account.balance < 0 ? "-" : "") + formatCurrency(account.balance)
+                          ? formatCurrency(account.balance)
                           : "••••••"
                         }
                       </span>
                     </td>
                     <td className="py-3 px-4 text-center">
-                      <Badge variant="outline" className="text-success border-success">
-                        Active
+                      <Badge variant="outline" className="text-green-600 border-green-600">
+                        {account.status}
                       </Badge>
                     </td>
                   </tr>
@@ -212,13 +162,31 @@ export default function Dashboard() {
             </table>
           </div>
           
-          {/* Total Balance Row */}
-          <div className="border-t bg-muted/30 mt-4">
-            <div className="flex justify-between items-center py-3 px-4">
-              <span className="font-semibold">Total Balance</span>
-              <span className="font-semibold font-mono">
-                {showBalance ? formatCurrency(totalBalance) : "••••••"}
+          {/* Balance Summary */}
+          <div className="border-t bg-muted/30 mt-4 space-y-2">
+            <div className="flex justify-between items-center py-2 px-4">
+              <span className="text-sm text-muted-foreground">Total Assets:</span>
+              <span className="text-sm font-mono text-green-600">
+                {showBalance ? `+${formatCurrency(totalAssets)}` : "••••••"}
               </span>
+            </div>
+            <div className="flex justify-between items-center py-2 px-4">
+              <span className="text-sm text-muted-foreground">Total Liabilities:</span>
+              <span className="text-sm font-mono text-red-600">
+                {showBalance ? `-${formatCurrency(totalLiabilities)}` : "••••••"}
+              </span>
+            </div>
+            <div className="border-t pt-2">
+              <div className="flex justify-between items-center py-2 px-4">
+                <span className="font-semibold">Net Worth:</span>
+                <span className={`font-semibold font-mono ${totalBalance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                  {showBalance ? (
+                    totalBalance >= 0 
+                      ? `+${formatCurrency(totalBalance)}` 
+                      : `-${formatCurrency(Math.abs(totalBalance))}`
+                  ) : "••••••"}
+                </span>
+              </div>
             </div>
           </div>
         </CardContent>

@@ -7,11 +7,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
+import { MOCK_ACCOUNTS } from "@/lib/mockData";
 
-const mockAccounts = [
-  { id: "123456789", name: "Checking Account (****6789)", balance: 2847.52 },
-  { id: "123456790", name: "Savings Account (****6790)", balance: 15678.90 },
-];
+const fundingAccounts = MOCK_ACCOUNTS.filter(account => 
+  account.type === "Checking" || account.type === "Savings"
+).map(account => ({
+  id: account.id,
+  name: `${account.type} Account (${account.accountNumber})`,
+  balance: account.balance
+}));
 
 const accountTypes = [
   {
@@ -57,7 +61,7 @@ export default function OpenAccount() {
       newErrors.fundingAccount = "Please select a funding source";
     }
 
-    const fundingAccount = mockAccounts.find(acc => acc.id === formData.fundingAccount);
+    const fundingAccount = fundingAccounts.find(acc => acc.id === formData.fundingAccount);
     if (fundingAccount && parseFloat(formData.initialDeposit) > fundingAccount.balance) {
       newErrors.initialDeposit = "Insufficient funds in funding account";
     }
@@ -216,7 +220,7 @@ export default function OpenAccount() {
                   <SelectValue placeholder="Select funding source" />
                 </SelectTrigger>
                 <SelectContent>
-                  {mockAccounts.map((account) => (
+                  {fundingAccounts.map((account) => (
                     <SelectItem key={account.id} value={account.id}>
                       <div className="flex justify-between items-center w-full">
                         <span>{account.name}</span>
@@ -272,7 +276,7 @@ export default function OpenAccount() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Funding Source:</span>
-                <span>{mockAccounts.find(acc => acc.id === formData.fundingAccount)?.name}</span>
+                <span>{fundingAccounts.find(acc => acc.id === formData.fundingAccount)?.name}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Processing Time:</span>

@@ -7,11 +7,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
+import { MOCK_ACCOUNTS } from "@/lib/mockData";
 
-const mockAccounts = [
-  { id: "123456789", name: "Checking Account (****6789)", balance: 2847.52 },
-  { id: "123456790", name: "Savings Account (****6790)", balance: 15678.90 },
-];
+const transferAccounts = MOCK_ACCOUNTS.filter(account => 
+  account.type === "Checking" || account.type === "Savings"
+).map(account => ({
+  id: account.id,
+  name: `${account.type} Account (${account.accountNumber})`,
+  balance: account.balance
+}));
 
 export default function Transfer() {
   const [formData, setFormData] = useState({
@@ -48,7 +52,7 @@ export default function Transfer() {
       newErrors.toAccount = "Source and destination accounts cannot be the same";
     }
 
-    const sourceAccount = mockAccounts.find(acc => acc.id === formData.fromAccount);
+    const sourceAccount = transferAccounts.find(acc => acc.id === formData.fromAccount);
     if (sourceAccount && parseFloat(formData.amount) > sourceAccount.balance) {
       newErrors.amount = "Insufficient funds in source account";
     }
@@ -108,7 +112,7 @@ export default function Transfer() {
     }).format(amount);
   };
 
-  const selectedAccount = mockAccounts.find(acc => acc.id === formData.fromAccount);
+  const selectedAccount = transferAccounts.find(acc => acc.id === formData.fromAccount);
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
@@ -155,7 +159,7 @@ export default function Transfer() {
                   <SelectValue placeholder="Select source account" />
                 </SelectTrigger>
                 <SelectContent>
-                  {mockAccounts.map((account) => (
+                  {transferAccounts.map((account) => (
                     <SelectItem key={account.id} value={account.id}>
                       <div className="flex justify-between items-center w-full">
                         <span>{account.name}</span>
@@ -215,7 +219,7 @@ export default function Transfer() {
                     <SelectValue placeholder="Select destination account" />
                   </SelectTrigger>
                   <SelectContent>
-                    {mockAccounts
+                    {transferAccounts
                       .filter(account => account.id !== formData.fromAccount)
                       .map((account) => (
                       <SelectItem key={account.id} value={account.id}>
@@ -302,14 +306,14 @@ export default function Transfer() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">From:</span>
-                <span>{mockAccounts.find(acc => acc.id === formData.fromAccount)?.name}</span>
+                <span>{transferAccounts.find(acc => acc.id === formData.fromAccount)?.name}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">To:</span>
                 <span>
                   {formData.isExternal 
                     ? `External Account (****${formData.toAccount.slice(-4)})`
-                    : mockAccounts.find(acc => acc.id === formData.toAccount)?.name
+                    : transferAccounts.find(acc => acc.id === formData.toAccount)?.name
                   }
                 </span>
               </div>

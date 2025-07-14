@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { MOCK_USER_PROFILE, MOCK_CREDENTIALS } from "@/lib/mockData";
 
 const states = [
   "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
@@ -83,6 +84,23 @@ export default function Register() {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const fillDemoData = () => {
+    setFormData({
+      firstName: MOCK_USER_PROFILE.firstName,
+      lastName: MOCK_USER_PROFILE.lastName,
+      streetAddress: MOCK_USER_PROFILE.streetAddress,
+      city: MOCK_USER_PROFILE.city,
+      state: MOCK_USER_PROFILE.state,
+      zipCode: MOCK_USER_PROFILE.zipCode,
+      phoneNumber: MOCK_USER_PROFILE.phoneNumber,
+      ssn: "123-45-6789", // Demo SSN
+      username: MOCK_CREDENTIALS.username,
+      password: MOCK_CREDENTIALS.password,
+      confirmPassword: MOCK_CREDENTIALS.password,
+    });
+    setErrors({});
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -169,6 +187,17 @@ export default function Register() {
         <Card className="shadow-lg border-0 bg-card/80 backdrop-blur">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-semibold">Register</CardTitle>
+            <div className="mt-4">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={fillDemoData}
+                className="text-xs"
+              >
+                Fill Demo Data
+              </Button>
+            </div>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
