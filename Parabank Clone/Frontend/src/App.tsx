@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Transfer from "./pages/Transfer";
 import OpenAccount from "./pages/OpenAccount";
 import BillPay from "./pages/BillPay";
+import RequestLoan from "./pages/RequestLoan";
 import Layout from "./components/Layout";
 import NotFound from "./pages/NotFound";
 
@@ -31,9 +32,7 @@ const App = () => (
           <Route path="/transfer" element={<Layout><Transfer /></Layout>} />
           <Route path="/open-account" element={<Layout><OpenAccount /></Layout>} />
           <Route path="/bill-pay" element={<Layout><BillPay /></Layout>} />
-          
-          {/* Placeholder routes for remaining features */}
-          <Route path="/loan" element={<Layout><div className="text-center py-8"><h1 className="text-2xl font-bold">Request Loan</h1><p className="text-muted-foreground">Coming soon...</p></div></Layout>} />
+          <Route path="/loan" element={<Layout><RequestLoan /></Layout>} />
           <Route path="/profile" element={<Layout><div className="text-center py-8"><h1 className="text-2xl font-bold">Update Contact Info</h1><p className="text-muted-foreground">Coming soon...</p></div></Layout>} />
           <Route path="/cards" element={<Layout><div className="text-center py-8"><h1 className="text-2xl font-bold">Manage Cards</h1><p className="text-muted-foreground">Coming soon...</p></div></Layout>} />
           <Route path="/investments" element={<Layout><div className="text-center py-8"><h1 className="text-2xl font-bold">Investments</h1><p className="text-muted-foreground">Coming soon...</p></div></Layout>} />
