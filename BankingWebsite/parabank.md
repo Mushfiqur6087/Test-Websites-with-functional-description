@@ -11,7 +11,8 @@ The login page displays the ParaBank header and primary navigation links (Soluti
 ## 2. Forgot Password
 ![Forgot Password](2_forget.png)
 The Forgot Login Info page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar contains the Customer Login form with Username and Password fields, a Log In button, and links for “Forgot login info?” and “Register.” The main content area presents a Customer Lookup form with seven required fields—First Name, Last Name, Address, City, State, Zip Code and SSN. If any field is left blank, the user is prompted to complete it before submitting. Once all fields are entered and the “Find My Login Info” button is clicked, the system attempts to match the information to a customer record. If no matching record is found, the page displays the error banner:
-"Error! The customer information provided could not be found." If a matching record is found, the page displays the appropriate recovery details
+"Error! The customer information provided could not be found." If a matching record is found, the page displays the appropriate recovery details.
+
 ![Forgot Password Error](2_forget_error.png)
 
 ## 3. Register
