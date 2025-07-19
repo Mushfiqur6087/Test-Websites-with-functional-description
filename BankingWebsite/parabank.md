@@ -2,7 +2,7 @@
 
 **Website URL:** [https://parabank.parasoft.com/parabank/index.htm](https://parabank.parasoft.com/parabank/index.htm)
 
-**Navigation:** Parabank is a sample banking application provided by Parasoft for testing purposes. When visitors arrive, they see the sign-in page, which offers an Email / Username and Password form, a Register link for new customers, and a Forgot Password? link for credential recovery. After a successful log-in, users reach their account dashboard displaying every account and balance. A left-hand navigation menu now contains the following options: Accounts Overview (default dashboard view), Open New Account, Transfer Funds, Bill Pay, Request Loan, Update Contact Info, and Log Out.
+**Navigation:** ParaBank is a sample banking application provided by Parasoft for testing purposes. When a visitor arrives, they see the Sign-In page with fields for Email/Username and Password, a Sign In button, plus “Register” and “Forgot Password?” links for new-user signup and credential recovery. After successful authentication, the user lands on the Accounts Overview dashboard, which displays each account number alongside its Balance and Available Amount. A left-hand menu under the “Account Services” heading offers quick access to Accounts Overview (the default view), Open New Account, Transfer Funds, Bill Pay, Request Loan, Update Contact Info and Log Out.
 
 ## 1. Login
 ![Login](1_login.png)
@@ -27,7 +27,7 @@ The Open New Account page displays the ParaBank header and primary navigation li
 ![New Account Success](4_newAccount_success.png)
 
 
-## My Account
+## 5. Account Overview
 ![My Account](5_myAccount.png)
 The Accounts Overview page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Accounts Overview highlighted. The main content area opens with the heading “Accounts Overview” above a table showing every account owned by the customer. Each row presents the account number alongside its current Balance and Available Amount. At the bottom of the table, the combined total balance across all accounts is shown.
 
