@@ -28,12 +28,25 @@ The Open New Account page displays the ParaBank header and primary navigation li
 
 
 ## My Account
-![My Account](6_myAccount.png)
-The My Account page displays a detailed dashboard for a selected account. It shows the account number, account type (Checking or Savings), and the current balance. Below, it lists all transactions for the account, including dates, descriptions, amounts, and running balances. Users can review their transaction history, check for recent deposits or withdrawals, and verify their current balance. This page helps users monitor account activity and manage their finances effectively.
+![My Account](5_myAccount.png)
+The Accounts Overview page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Accounts Overview highlighted. The main content area opens with the heading “Accounts Overview” above a table showing every account owned by the customer. Each row presents the account number alongside its current Balance and Available Amount. At the bottom of the table, the combined total balance across all accounts is shown.
 
 ## 6. Transfer Funds
-![Transfer Funds](7_transferFunds.png)
- The fund-transfer page presents a transfer form that requires the user to enter a Transfer Amount, choose a Source Account from a dropdown of their eligible accounts, and specify the Destination Account—either by selecting one of their own linked accounts or by typing an external account number with an optional Confirm Account Number field—followed by a “Transfer” button. When submitted, the system validates every input for presence and format, confirms that any duplicated account-number fields match, verifies that the source account’s available balance covers the requested amount, and checks the destination account’s validity. If all checks pass, it immediately posts the debit and credit, updates the displayed balances, and shows the explicit success message “Transfer completed successfully.” along with a transaction reference; if any check fails, it displays a clear error message such as “Insufficient funds” or “Invalid destination account,” highlights the affected fields, and allows the user to correct and resubmit.
+![Transfer Funds](6_transferFunds.png)
+The Transfer Funds page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Transfer Funds highlighted. The main content area opens with the heading “Transfer Funds” above a form containing an Amount field and two dropdowns labeled From account # and To account # for selecting existing accounts. After the user enters a value and selects both source and destination accounts and clicks Transfer, the page displays: "Transfer Complete! amount has been transferred from account _ to account _.See Account Activity for more details."
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 7. Bill payments
 ![Bill Payment](8_billPayment.png)
