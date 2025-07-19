@@ -35,34 +35,24 @@ The Accounts Overview page displays the ParaBank header and primary navigation l
 ![Transfer Funds](6_transferFunds.png)
 The Transfer Funds page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Transfer Funds highlighted. The main content area opens with the heading “Transfer Funds” above a form containing an Amount field and two dropdowns labeled From account # and To account # for selecting existing accounts. After the user enters a value and selects both source and destination accounts and clicks Transfer, the page displays: "Transfer Complete! amount has been transferred from account _ to account _.See Account Activity for more details."
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 7. Bill payments
-![Bill Payment](8_billPayment.png)
- The bill-payment page contains a payment form with required inputs for Payee Name, Street Address, City, State, ZIP Code, Phone Number, Payee Account Number plus a Confirm Account Number field, Payment Amount, and a Source Account drop-down, finished by a “Pay” button. On submission, the system validates each entry for presence and format, confirms that the two account-number fields match, verifies that the selected source account holds sufficient available funds, and then executes the payment to the external payee. If all checks pass, it displays “Payment submitted successfully.” along with a transaction reference and updates the account balance; if any validation or balance check fails, it shows a clear error message such as “Insufficient funds” or “Account numbers do not match,” highlights the problematic fields, and lets the user correct and resubmit.
+![Bill Payment](7_billPayment.png)
+The Bill Pay page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Bill Pay highlighted. The main content area opens with the heading “Bill Payment Service” above a form containing required fields for Payee Name, Address, City, State, Zip Code, Phone #, Account #, Verify Account #, Amount and a From account # dropdown. After all fields are completed and the user clicks Send Payment, the page displays: "Bill Payment Complete. Bill Payment to user_ in the amount _ from account _  was successful. See Account Activity for more details."
 
 ## 8. Find Transaction
-![Find Transaction](9_findTransaction.png)
- The transaction search page allows users to find specific transactions by entering criteria such as date range, amount, or description. Matching results are displayed in a list for review. If no transactions are found, a message is shown to the user.
+![Find Transaction](8_findTransaction.png)
+The Find Transactions page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Find Transactions highlighted. The main content area opens with the heading “Find Transactions” above a dropdown for selecting an account and four search panels—Find by Transaction ID, Find by Date, Find by Date Range, and Find by Amount—each with its own input field and a Find Transactions button. All fields are required and dates must be entered in MM-DD-YYYY format; if a user submits invalid or empty input, an inline validation message appears next to the offending field. When a valid search is submitted, the system returns any matching transactions in a results table showing details such as Transaction ID, Date, Description and Amount. If error occurs during the lookup, the page displays the error banner: "Error! An internal error has occurred and has been logged."
 
 ## 9. Update Profile
-![Update Profile](10_updateProfile.png)
- The customer-profile page presents an editable form pre-populated with the user’s current First Name, Last Name, Street Address, City, State, ZIP Code, and Phone Number, along with an “Update Profile” button. When the user edits any field and submits, the system validates each entry—checking, for example, that the phone number matches the required format and that all address components are complete and logically consistent—then saves the changes and synchronizes them across all relevant services. If every check passes, it displays “Profile updated successfully.” and refreshes the page to show the new data; otherwise it highlights any invalid fields, shows an inline error banner explaining what needs fixing, and allows the user to correct and resubmit.
+![Update Profile](9_updateProfile.png)
+The Update Profile page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Update Contact Info highlighted. The main content area opens with the heading “Update Profile” above a form containing required fields for First Name, Last Name, Address, City, State, Zip Code and Phone #, plus an Update Profile button. Upon successful submission, the page displays: "Profile Updated. Your updated address and phone number have been added to the system."
 
 ## 10. Request Loan
-![Loan Application](11_loan.png)
- The loan-application page presents a loan request form requiring the customer to enter the Loan Amount, specify a Down-Payment Amount (which must be numerically less than the loan amount), choose a Collateral Account from a dropdown of eligible accounts, and press “Apply”. Upon submission, the system checks every field for completeness and correct numeric format, verifies that sufficient funds exist to cover the down payment, confirms the collateral account’s value meets policy thresholds, and then runs an automated credit evaluation that factors in the customer’s account history, current balances, and collateral valuation. If the application qualifies, the system debits the down-payment funds, earmarks the collateral, creates a new loan account, and displays “Loan approved and created successfully.” along with the account number, disbursement schedule, and repayment terms; if the request is denied, it returns “Loan application denied” followed by specific reasons (e.g., “Insufficient collateral value” or “Account history does not meet criteria”) and allows the customer to adjust inputs or contact support.
+![Loan Application](10_loan.png)
+ The Apply for a Loan page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar, titled Account Services, lists all actions—Open New Account, Accounts Overview, Transfer Funds, Bill Pay, Find Transactions, Update Contact Info, Request Loan and Log Out—with Request Loan highlighted. The main content area opens with the heading “Apply for a Loan” above a form containing three mandatory inputs—Loan Amount, Down Payment and a From account # dropdown—and an Apply Now button. When Apply Now is clicked and all fields are filled correctly, the page displays:"Loan Approved! Your loan has been approved."
+ If any field is left blank or an internal error occurs, the page displays: "Error! An internal error has occurred and has been logged."
+
+![Loan Approve](10_loan_approve.png)
 
  ## Logout
  The logout function securely ends the user session, clears any sensitive data from the session, and returns the user to the login page. This ensures that no account information remains accessible after logout.
