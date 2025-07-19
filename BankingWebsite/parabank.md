@@ -6,11 +6,13 @@
 
 ## 1. Login
 ![Login](1_login.png)
- The login page contains a login form with two required input fields Email/Username and Password along with a "Sign In" button and a "Forgot Password?" link. When the user submits the form, the system securely validates the provided credentials against the registered user database. If the authentication is successful, a clear success message saying "Signed in successfully." is displayed, and the user is redirected to their account dashboard. If the credentials are incorrect, an error message such as "Incorrect email or password. Please try again." is shown, the password field is cleared, and the user is allowed to try again.
+The login page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) on the left and quick-access icons (Home, Profile, Messages) at the top. Below that is the Customer Login form with two text inputs—Username (or Email) and Password—and a Log In button. Directly beneath the button are the “Forgot login info?” link and a “Register” link for new users. When the user clicks Log In, the system submits the credentials to the server. If they match a registered account, the user is immediately taken to their account dashboard. If they do not match (or any error occurs during authentication), the same error banner “An internal error has occurred and has been logged. Please try again later.” is shown, both input fields remain populated, and the user can correct their entry and click Log In again.
 
 ## 2. Forgot Password
 ![Forgot Password](2_forget.png)
- The forgot password page allows users to recover their credentials by entering their registered email address or username. Upon submission, the system validates the input and, if matched, sends password reset instructions to the user's email. If the input is invalid, an error message is displayed and the user can try again.
+The Forgot Login Info page displays the ParaBank header and primary navigation links (Solutions, About Us, Services, Products, Locations, Admin Page) alongside the Home, Profile and Messages icons. The left sidebar contains the Customer Login form with Username and Password fields, a Log In button, and links for “Forgot login info?” and “Register.” The main content area presents a Customer Lookup form with seven required fields—First Name, Last Name, Address, City, State, Zip Code and SSN. If any field is left blank, the user is prompted to complete it before submitting. Once all fields are entered and the “Find My Login Info” button is clicked, the system attempts to match the information to a customer record. If no matching record is found, the page displays the error banner:
+"Error! The customer information provided could not be found." If a matching record is found, the page displays the appropriate recovery details
+![Forgot Password Error](2_forgot_error.png)
 
 ## 3. Register
 ![Sign Up](3_signup.png)
