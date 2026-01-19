@@ -29,11 +29,11 @@ A "+" button appears at the bottom of each section. Clicking this button shows a
 
 When adding an Assignment, the configuration form appears with the heading "New Assignment" and an "Expand all" link to expand all sections. The form contains multiple collapsible sections:
 
-**General section:** Contains an "Assignment name" field (required), a "Description" rich text editor with formatting toolbar, a "Display description on course page" checkbox, an "Activity instructions" rich text editor, and an "Additional files" upload area with drag-and-drop support showing "Maximum size for new files: 100 MB".
+The General section contains an "Assignment name" field (required), a "Description" rich text editor with formatting toolbar, a "Display description on course page" checkbox, an "Activity instructions" rich text editor, and an "Additional files" upload area with drag-and-drop support showing "Maximum size for new files: 100 MB".
 
-**Availability section:** Contains date/time settings with Enable checkboxes for "Allow submissions from", "Due date", "Cut-off date", and "Remind me to grade by". Each has day, month, year, hour, and minute dropdowns plus a calendar picker icon. An "Always show description" checkbox is also present.
+The Availability section contains date/time settings with Enable checkboxes for "Allow submissions from", "Due date", "Cut-off date", and "Remind me to grade by". Each has day, month, year, hour, and minute dropdowns plus a calendar picker icon. An "Always show description" checkbox is also present.
 
-**Submission types section:** Contains checkboxes for "Online text" and "File submissions", a "Maximum number of uploaded files" dropdown, a "Maximum submission size" dropdown showing "Site upload limit (100 MB)", and an "Accepted file types" field with a "Choose" button.
+The Submission types section contains checkboxes for "Online text" and "File submissions", a "Maximum number of uploaded files" dropdown, a "Maximum submission size" dropdown showing "Site upload limit (100 MB)", and an "Accepted file types" field with a "Choose" button.
 
 Additional collapsible sections include: Feedback types, Submission settings, Group submission settings, Notifications, Grade, Common module settings, Restrict access, Completion conditions, Tags, and Competencies. A "Send content change notification" checkbox appears near the bottom. Required fields are indicated with a "Required" label.
 
