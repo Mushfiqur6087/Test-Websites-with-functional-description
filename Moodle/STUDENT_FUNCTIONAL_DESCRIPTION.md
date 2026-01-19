@@ -1,6 +1,6 @@
 # Moodle Student Functional Description
 
-**Test Account:** janestudent / Test@1234
+**Test Account:** teststudent / Test@1234
 
 
 ## 1. Login
